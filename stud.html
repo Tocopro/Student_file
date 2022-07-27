@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+<form onsubmit="return false">
+    <div class="section1">
+        <h2> Student Registration Portal</h2>
+        <h4>Student ID Information</h4>
+        <label class="one" for="studentID">Student ID </label>
+        <input class="two" type="text" id="studentID" name="studentID" value="" autocomplete="off" required><br>
+        <label class="one" for="firstName">First Name</label>
+        <input class="two" type="text" id="firstName" name="firstName" value="" autocomplete="off" required><br>
+        <label class="one" for="lastName">Last Name</label>
+        <input class="two" type="text" id="lastName" name="lastName" value="" autocomplete="off" required><br>
+        <label class="one" for="begin">Age</label>
+        <input class="two" type="date" name="begin" id="begin" placeholder="dd-mm-yyyy" value="" min="1900-01-01"
+               max="2099-12-31" required>
+        <h5>Gender</h5>
+        <fieldset class="four">
+            <legend class="legend">Select your Gender</legend>
+            <label for="female">Female</label>
+            <input class="two" type="radio" id="female" name="female" value="female"><br>
+            <label for="male">Male</label>
+            <input class="two" type="radio" id="male" name="female" value="male">
+        </fieldset><br><br>
+        <label class="three" for="email">Enter your Email Address</label>
+        <input class="five" type="text" id="email" name="email" value="" required>
+        <label class="three" for="phone">Telephone</label>
+        <input class="five" type="text" id="phone" name="phone" value="" required><br><br>
+        <label for="address">Residential Address</label><br>
+        <textarea id="address" rows="4" cols="25" required></textarea><br><br>
+        <label for="semester">Semester</label><br><br>
+        <select id="semester" name="semester">
+            <option value="Spring Semester">Spring Semester</option>
+            <option value="Summer 1">Summer 1</option>
+            <option value="Summer 2">Summer 2</option>
+            <option value="Fall Semester">Fall Semester</option>
+        </select><br><br>
+        <label for="subject-major">Subject Major Choice</label><br><br>
+        <select id="subject-major" name="subject-major">
+            <option value="Arts">Arts</option>
+            <option value="Sciences">Sciences</option>
+            <option value="Humanities">Humanities</option>
+            <option value="Sports">Sports</option>
+        </select><br><br>
+        <label for="classes">Select a Class or Classes</label><br><br>
+        <select id="classes" name="classes">
+            <option value="Mathematics">Mathematics</option>
+            <option value="English">English</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Geography">Geography</option>
+            <option value="History">History</option>
+            <option value="Social Studies">Social Studies</option>
+            <option value="Psychology">Psychology</option>
+        </select><br><br>
+        <input class="six" onclick="f_2()" type="button" id="button1" value="SAVE">
+    </div>
+</form>
+</body>
+<script src="proj 1.js"></script>
+</html>
+
+
+CSS
+styling
+
+body {
+    font-family: "Convergence", sans-serif;
+    align-content: center;
+    text-align: center;
+}
+
+.two {
+    margin: 5px;
+    padding: 8px;
+}
+.legend
+{
+    width: 20%;
+
+}
+.five
+{
+    margin: 5px;
+    padding: 6px;
+}
+.four
+{
+    width: 25%;
+    margin: auto;
+}
+.six
+{
+    padding: 5px;
+    position: absolute;
+    left: 55%;
+}
+
+Javascript function
+
+
+function f_2()
+{
+
+    let student_id = document.getElementById("studentID").value;
+    let student_first_name = document.getElementById("firstName").value;
+    let student_last_name = document.getElementById("lastName").value;
+
+    let students_age = document.getElementById("begin").value;
+    let student_email = document.getElementById("email").value;
+    let student_phone = document.getElementById("phone").value;
+    let student_address = document.getElementById("address").value;
+    let student_semester_choice = document.getElementById("semester").value;
+    let student_subject_choice = document.getElementById("subject-major").value;
+    let student_classes = document.getElementById("classes").value;
+    let data = [];
+    data.push(student_first_name);
+    data.push(student_last_name);
+    alert("Test1");
+
+    let data_input = JSON.stringify(data);
+    let file = new Blob([data_input], {type: "text"});
+    let anchor = document.createElement("a");
+    anchor.download = "C:\\Users\\NEAK\\Downloads\\student_information.txt";
+    anchor.click();
+
+    let rd1 = document.getElementById("female");
+    let rd2 = document.getElementById("male");
+    if (rd1.checked === true) {
+        alert("Female" + rd1.value)
+    } else if (rd2.checked === true) {
+        alert("Male" + rd2.value)
+    } else {
+        alert("No Channel Selected")
+    }
+
+}
